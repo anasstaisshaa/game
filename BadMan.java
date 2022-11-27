@@ -2,13 +2,13 @@ package com.game;
 
 public class BadMan extends Enemy {
 
-    protected static final String ACTION = "beats at";
+    private static final String ACTION = "beats at";
 
     public BadMan(String name, int health, int damage) {
         super(name, health, damage);
     }
 
-    public void attackHero(Hero hero) {
+    public void attackHero(AbstractPlayer hero) {
         super.setAction(ACTION);
         super.attackHero(hero);
     }

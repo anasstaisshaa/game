@@ -4,30 +4,26 @@ public abstract class Enemy extends AbstractPlayer {
 
     protected String action;
 
-    public String getAction() {
+    private String getAction() {
         return action;
     }
 
-    public void setAction(String action) {
+    protected void setAction(String action) {
         this.action = action;
     }
 
-    public Enemy(String name, int health, int damage) {
-        this.health = health;
-        this.damage = damage;
-        this.name = name;
+    protected Enemy(String name, int health, int damage) {
+        super.health = health;
+        super.damage = damage;
+        super.name = name;
     }
 
-    public int getDamage() {
+    private int getDamage() {
         return damage;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
     @Override
-    public void attackHero(Hero hero) {
+    public void attackHero(AbstractPlayer hero) {
         if (getHealth() > 0) {
             if (hero.isAlive()) {
                 actionOnAlivePlayer(hero, getAction(), getDamage());
@@ -36,13 +32,13 @@ public abstract class Enemy extends AbstractPlayer {
                 actionOnDiedPlayer(hero, getAction());
             }
         } else {
-            System.out.println(getName() + " can't attack because ENEMY has died");
+            System.out.println(getName() + " can't attack because " + getName() +" has died");
         }
         System.out.println();
     }
 
     @Override
-    public void attackEnemy(Enemy enemy) {
+    public void attackEnemy(AbstractPlayer enemy) {
         //STUB - only for education
     }
 }
